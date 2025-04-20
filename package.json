@@ -5,7 +5,7 @@
   "author": "José Auyón",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+   "test": "vitest",
     "dev": "nodemon backend/server.js"
   },
   "keywords": [],
@@ -16,5 +16,9 @@
     "express": "^5.1.0",
     "mongoose": "^8.13.2",
     "nodemon": "^3.1.9"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.0",
+    "vitest": "^3.1.1"
   }
 }
