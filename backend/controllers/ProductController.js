@@ -42,6 +42,7 @@ export const getProducts = async (req, res) => {
 
     try {
         const products = await Product.find({})
+
         res.status(200).json({
             success: true,
             message: "All products obtained",
@@ -56,7 +57,7 @@ export const getProducts = async (req, res) => {
 
 
     }
-
+    console.log(req.method, req.originalUrl)
 }
 
 
@@ -66,26 +67,26 @@ export const deleteProduct = async (req, res) => {
 
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(400).json({ message: "Invalid product ID" })
+        return res.status(400).json({ success: false, message: "Invalid product ID" })
     }
 
     try {
 
         const product = await Product.findById(id)
         if (!product) {
-            return res.status(404).json({ message: "Product not found" })
+            return res.status(404).json({ success: false, message: "Product not found" })
         }
 
         await Product.findByIdAndDelete(id)
         res.status(200).json({
             success: true,
-            message: "Product delete successfully"
+            message: "Product deleted successfully"
         })
     } catch (error) {
         console.error("DELETE /api/products/:id error:", error)
-        return res.status(500).json({ message: "Server error" })
+        return res.status(500).json({ success: false, message: "Server error" })
     }
-
+    console.log(req.method, req.originalUrl)
 }
 
 
@@ -115,5 +116,7 @@ export const updateProduct = async (req, res) => {
         console.error("Update  /api/product/:id error:", error)
         return res.status(500).json({ message: "Server error" })
     }
+
+    console.log(req.method, req.originalUrl)
 
 }
