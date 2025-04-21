@@ -28,7 +28,9 @@ dist-ssr
 .env.local
 .env.development.local
 .env.test.local
-
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
 
 venv
 env
