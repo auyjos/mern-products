@@ -37,6 +37,7 @@ describe('deleteProduct controller', () => {
         // Assert: status 400 with correct message
         expect(res.status).toHaveBeenCalledWith(400)
         expect(res.status().json).toHaveBeenCalledWith({
+            success: false,
             message: 'Invalid product ID'
         })
     })
@@ -56,6 +57,7 @@ describe('deleteProduct controller', () => {
         // Assert: status 404 with correct message
         expect(res.status).toHaveBeenCalledWith(404)
         expect(res.status().json).toHaveBeenCalledWith({
+            success: false,
             message: 'Product not found'
         })
     })
@@ -83,7 +85,7 @@ describe('deleteProduct controller', () => {
         expect(res.status).toHaveBeenCalledWith(200)
         expect(res.status().json).toHaveBeenCalledWith({
             success: true,
-            message: 'Product delete successfully'
+            message: 'Product deleted successfully'
         })
     })
 
@@ -105,6 +107,7 @@ describe('deleteProduct controller', () => {
         // Assert: 500 with generic message
         expect(res.status).toHaveBeenCalledWith(500)
         expect(res.status().json).toHaveBeenCalledWith({
+            success: false,
             message: 'Server error'
         })
 
